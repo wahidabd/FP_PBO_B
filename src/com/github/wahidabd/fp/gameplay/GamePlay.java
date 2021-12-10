@@ -1,3 +1,5 @@
+package com.github.wahidabd.fp.gameplay;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -32,7 +34,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 	
 	
 	private Timer timer;
-	private int delay = 100;
+//	private int delay = 100;
 	
 	private ImageIcon tail;
 	private int moves = 0;
@@ -63,15 +65,22 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 	private ImageIcon titleImage;
 	
 	
-	public GamePlay() {
-		//Part3
+	public GamePlay(int delay, int level) {
 		addKeyListener(this);
 		setFocusable(true);
 		setFocusTraversalKeysEnabled(false);
 		
 		timer = new Timer(delay, this);
 		timer.start();
-		//Part3
+
+		headRight = new ImageIcon("assets/headRightGreen.png");
+
+		switch (level){
+			case 1: {
+//				headRight = new ImageIcon("assets/headRightGreen.png);
+			}
+
+		}
 	}
 
 
@@ -93,7 +102,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 
 		
 		//draw title image
-		titleImage = new ImageIcon("title.png");
+		titleImage = new ImageIcon("assets/title.png");
 		titleImage.paintIcon(this, g, 25, 5);
 		
 		
@@ -116,7 +125,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		g.drawString("Length: " + lengthofsnake, 780, 50);
 		
 		//initial position
-		headRight = new ImageIcon("headRight.png");
+		headRight = new ImageIcon("assets/headRightGreen.png");
 		headRight.paintIcon(this,g , snakeXlength[0], snakeYlength[0]);
 		
 		//part3
@@ -124,38 +133,38 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		{
 			if(i==0 && right)
 			{
-				headRight = new ImageIcon("headRight.png");
+				headRight = new ImageIcon("assets/headRightGreen.png");
 				headRight.paintIcon(this,g , snakeXlength[i], snakeYlength[i]);
 				
 			}
 			if(i==0 && left)
 			{
-				headLeft = new ImageIcon("headLeft.png");
+				headLeft = new ImageIcon("assets/headLeftGreen.png");
 				headLeft.paintIcon(this,g , snakeXlength[i], snakeYlength[i]);
 				
 			}
 			if(i==0 && down)
 			{
-				headDown = new ImageIcon("headDown.png");
+				headDown = new ImageIcon("assets/headDownGreen.png");
 				headDown.paintIcon(this,g , snakeXlength[i], snakeYlength[i]);
 				
 			}
 			if(i==0 && up)
 			{
-				headUp = new ImageIcon("headUp.png");
+				headUp = new ImageIcon("assets/headUpGreen.png");
 				headUp.paintIcon(this,g , snakeXlength[i], snakeYlength[i]);
 				
 			}
 			if(i!=0)
 			{
-				tail = new ImageIcon("tail.png");
+				tail = new ImageIcon("assets/tailGreen.png");
 				tail.paintIcon(this,g , snakeXlength[i], snakeYlength[i]);
 
 			}
 		}
 		//Part3
 		//Part5
-		fruitimage = new ImageIcon("fruit.png");
+		fruitimage = new ImageIcon("assets/fruit.png");
 		if(fruitXpos[xpos] == snakeXlength[0] && fruitYpos[ypos] == snakeYlength[0])
 		{
 			score= score+5;

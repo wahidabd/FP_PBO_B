@@ -1,3 +1,5 @@
+package com.github.wahidabd.fp.start;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -54,7 +56,7 @@ public class Welcome extends JWindow {
         private final ImageIcon image;
 
         public ImageSplash(){
-            image = new ImageIcon("welcomeImage.png");
+            image = new ImageIcon("assets/welcomeImage.png");
         }
 
         @Override
@@ -62,6 +64,7 @@ public class Welcome extends JWindow {
             super.paintComponent(g);
 
             image.paintIcon(this, g, 0, 0);
+
         }
     }
 }
