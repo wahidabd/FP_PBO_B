@@ -1,6 +1,7 @@
 package com.github.wahidabd.fp.start;
 
 import com.github.wahidabd.fp.utils.Constant;
+import com.github.wahidabd.fp.utils.Functions;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,15 +16,9 @@ public class About extends JPanel implements KeyListener {
         setSize(Constant.WIDTH, Constant.HEIGHT);
         addKeyListener(this);
         setFocusable(true);
-//        frame = new JFrame();
-//        frame.getContentPane();
-//        frame.setLocationRelativeTo(null);
     }
 
     public void paint(Graphics g){
-//        ImageIcon background = new ImageIcon(Constant.BACKGROUND_IMAGE);
-//        background.paintIcon(this, g, 0, 0);
-
         ImageIcon about = new ImageIcon(Constant.IMAGE_ABOUT_US);
         about.paintIcon(this, g, 0, 0);
     }
@@ -35,8 +30,8 @@ public class About extends JPanel implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_Q){
-//            Constant.dispose();
+        if (e.getKeyCode() == KeyEvent.VK_X){
+            Functions.dispose();
             System.out.println("Back");
         }
     }

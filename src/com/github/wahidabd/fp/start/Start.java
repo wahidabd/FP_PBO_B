@@ -1,8 +1,7 @@
 package com.github.wahidabd.fp.start;
 
-import com.github.wahidabd.fp.Main;
-import com.github.wahidabd.fp.gameplay.GamePlay;
 import com.github.wahidabd.fp.utils.Constant;
+import com.github.wahidabd.fp.utils.Functions;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,14 +38,13 @@ public class Start extends JPanel implements KeyListener {
     private void toAbout(){
         About about = new About();
 
-        Constant.frame(about);
-//        JFrame obj = new JFrame();
+        Functions.frame(about);
         repaint();
     }
 
     private void toLevel(){
         Level level = new Level();
-        Constant.frame(level);
+        Functions.frame(level);
         repaint();
     }
 

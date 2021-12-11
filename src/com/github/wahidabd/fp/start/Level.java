@@ -83,6 +83,8 @@ public class Level extends JPanel {
         FontMetrics fm = g.getFontMetrics();
         int x = (dimension.width - fm.stringWidth(select)) / 2;
         g.drawString(select,  x, 35);
+
+        g.dispose();
     }
 
 }
