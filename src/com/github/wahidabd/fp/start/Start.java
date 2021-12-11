@@ -12,20 +12,14 @@ import java.awt.event.MouseEvent;
 
 public class Start extends JPanel {
 
-    private final JFrame frame;
+//    private final JFrame frame;
     private JButton button;
 
     private ImageIcon startImage;
     private ImageIcon aboutImage;
 
     public Start(){
-        setSize(905, 700);
         setFocusable(true);
-
-        frame = new JFrame();
-        frame.setLocationRelativeTo(null);
-        frame.getContentPane();
-        this.setLayout(null);
         setOpaque(false);
 
         showPanel();
@@ -72,8 +66,9 @@ public class Start extends JPanel {
         background.paintIcon(this, g, 0, 0);
 
         // image icon
-        startImage.paintIcon(this, g, Constant.HEIGHT / 2 - 12, 250);
-        aboutImage.paintIcon(this, g, Constant.HEIGHT / 2 - 12, 350);
+        startImage.paintIcon(this, g, 338, 250);
+        aboutImage.paintIcon(this, g, 338, 350);
+
     }
 
 }

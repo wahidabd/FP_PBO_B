@@ -1,90 +1,80 @@
 package com.github.wahidabd.fp.start;
 
 import com.github.wahidabd.fp.gameplay.GamePlay;
+import com.github.wahidabd.fp.utils.Constant;
+import com.github.wahidabd.fp.utils.Functions;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Level extends JPanel {
 
-    private final JFrame frame;
-
-    private JButton buttonEasy;
-    private JButton buttonNormal;
-    private JButton buttonHard;
+    private ImageIcon chooseLevel;
+    private ImageIcon back;
+    private ImageIcon easy;
+    private ImageIcon medium;
+    private ImageIcon hard;
 
     public Level(){
-        // Set center in screen and set size screen
-        frame = new JFrame();
-        setSize(905, 700);
-        frame.setLocationRelativeTo(null);
-        frame.getContentPane();
-        this.setLayout(null);
-        this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        setFocusable(true);
+        setOpaque(false);
 
+        showPanel();
     }
 
-    private void buttonHandle(){
+    private void showPanel(){
+        chooseLevel = new ImageIcon(Constant.CHOOSE_LEVEL);
+        back = new ImageIcon(Constant.BACK_IMAGE);
+        easy = new ImageIcon(Constant.EASY_LEVEL);
+        medium = new ImageIcon(Constant.MEDIUM_LEVEL);
+        hard = new ImageIcon(Constant.HARD_LEVEL);
 
-        int yEasy = 50;
-        int yNormal = yEasy * 2;
-        int yHard = yNormal + 50;
+        // when mouse click
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int x = e.getX();
+                int y = e.getY();
 
-        // Set button Easy
-        buttonEasy = new JButton();
-        buttonEasy.setText("Easy");
-        buttonEasy.setFocusable(false);
-        buttonEasy.setVisible(true);
-        buttonEasy.setBounds(700/2, yEasy, 200, 40);
-        buttonEasy.addActionListener(click -> action(70, 1));
+                if ((x >= 338 && x <= 567) && (y >= 271 && y <= 327)){
+                    System.out.println("EASY");
+                }else if ((x >= 338 && x <= 567) && (y >= 347 && y <= 404)){
+                    action(60, 2);
+                }else if ((x >= 338 && x <= 567) && (y >= 323 && y <= 479)){
+                    action(30, 3);
+                }else if ((x >= 52 && x <= 79) && (y >= 40 && y <= 61)){
+                    Functions.dispose();
+                }
 
+                System.out.println("X= " + x + ", Y=" + y);
 
-        buttonNormal = new JButton();
-        buttonNormal.setText("Normal");
-        buttonNormal.setFocusable(false);
-        buttonNormal.setVisible(true);
-        buttonNormal.setBounds(700/2, yNormal, 200, 40);
-        buttonNormal.addActionListener(click -> action(50, 2));
-
-        buttonHard = new JButton();
-        buttonHard.setText("Hard");
-        buttonHard.setFocusable(false);
-        buttonHard.setVisible(true);
-        buttonHard.setBounds(700/2, yHard, 200, 40);
-        buttonHard.addActionListener(click -> action(20, 3));
+            }
+        });
     }
 
     private void action(int delay, int level){
 
         GamePlay gamePlay = new GamePlay(delay, level);
-        frame.setBounds(10,10,905,700);
-        frame.setBackground(Color.DARK_GRAY);
-        frame.setResizable(false);
-        frame.setVisible(true);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(gamePlay);
-
+        Functions.frame(gamePlay);
         repaint();
     }
 
     public void paint(Graphics g){
 
-        buttonHandle();
-        this.add(buttonEasy);
-        this.add(buttonNormal);
-        this.add(buttonHard);
+        // background
+        ImageIcon background = new ImageIcon(Constant.BACKGROUND_IMAGE);
+        background.paintIcon(this, g, 0, 0);
 
-        Dimension dimension = this.getSize();
+        // position all image
+        chooseLevel.paintIcon(this, g, 254, 32);
+        back.paintIcon(this, g, 49, 36);
+        easy.paintIcon(this, g, 338, 271);
+        medium.paintIcon(this, g, 338, 347);
+        hard.paintIcon(this, g, 338, 423);
 
-        g.setColor(Color.CYAN);
-        g.setFont(new Font("areal", Font.BOLD, 24));
-        String select = "Select Level";
-        FontMetrics fm = g.getFontMetrics();
-        int x = (dimension.width - fm.stringWidth(select)) / 2;
-        g.drawString(select,  x, 35);
 
-        g.dispose();
     }
 
 }

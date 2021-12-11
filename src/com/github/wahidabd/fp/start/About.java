@@ -5,39 +5,38 @@ import com.github.wahidabd.fp.utils.Functions;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class About extends JPanel implements KeyListener {
+public class About extends JPanel {
 
-//    private final JFrame frame;
+    private final ImageIcon back;
 
     public About(){
         setSize(Constant.WIDTH, Constant.HEIGHT);
-        addKeyListener(this);
         setFocusable(true);
+
+        back = new ImageIcon(Constant.BACK_IMAGE);
+
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int x = e.getX();
+                int y = e.getY();
+
+                if ((x >= 52 && x <= 79) && (y >= 40 && y <= 61)){
+                    Functions.dispose();
+                }
+
+            }
+        });
     }
 
     public void paint(Graphics g){
         ImageIcon about = new ImageIcon(Constant.IMAGE_ABOUT_US);
         about.paintIcon(this, g, 0, 0);
-    }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_X){
-            Functions.dispose();
-            System.out.println("Back");
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
+        back.paintIcon(this, g, 49, 36);
 
     }
 }
