@@ -3,6 +3,7 @@ package com.github.wahidabd.fp.start;
 import com.github.wahidabd.fp.gameplay.GamePlay;
 import com.github.wahidabd.fp.utils.Constant;
 import com.github.wahidabd.fp.utils.Functions;
+import com.github.wahidabd.fp.utils.Sound;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,13 +11,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Level extends JPanel {
-
-    private ImageIcon chooseLevel;
+	private ImageIcon chooseLevel;
     private ImageIcon back;
     private ImageIcon easy;
     private ImageIcon medium;
     private ImageIcon hard;
-
+   
     public Level(){
         setFocusable(true);
         setOpaque(false);
@@ -30,7 +30,7 @@ public class Level extends JPanel {
         easy = new ImageIcon(Constant.EASY_LEVEL);
         medium = new ImageIcon(Constant.MEDIUM_LEVEL);
         hard = new ImageIcon(Constant.HARD_LEVEL);
-
+        
         // when mouse click
         addMouseListener(new MouseAdapter() {
             @Override

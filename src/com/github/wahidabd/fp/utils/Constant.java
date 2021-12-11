@@ -38,5 +38,10 @@ public class Constant {
     public static final String RIGHT_RED = "assets/headRightRed.png";
     public static final String DOWN_RED = "assets/headDownRed.png";
     public static final String TAIL_RED = "assets/tailRed.png";
+    
+    // Sound
+    public static final String MUSIC_EAT      = "assets/Music_eat.wav";
+    public static final String MUSIC_GAMEOVER = "assets/Music_gameover.wav";
+    public static final String MUSIC_GAMEPLAY = "assets/Music_gameplay.wav"; 
 
 }
