@@ -14,7 +14,6 @@ public class Constant {
     public static final String FRUIT_IMAGE = "assets/fruit.png";
     public static final String TITLE_IMAGE = "assets/title.png";
 
-
     // Snake Color
     public static final String LEFT_GREEN = "assets/headLeftGreen.png";
     public static final String UP_GREEN = "assets/headUpGreen.png";
