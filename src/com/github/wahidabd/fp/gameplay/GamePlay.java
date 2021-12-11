@@ -34,6 +34,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 	private ImageIcon tail;
 	private int moves = 0;
 	private int score = 0;
+	private int scoreLevel;
 
 
 	private final int [] fruitXpos = {25,50,75,100,125,150,175,200,225,250,275,300,325,250,375,400,425,450,475,500,525,550,575,600,
@@ -47,11 +48,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 	
 	private int xpos = random.nextInt(34);
 	private int ypos = random.nextInt(23);
-	//Part5
-	
-	
-	
-	//Part2
+
 
 
 	public GamePlay(int delay, int level) {
@@ -68,8 +65,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 
 	public void paint(Graphics g) {
 		
-		if (moves == 0)
-		{
+		if (moves == 0) {
 			snakeXLength[2] = 50;
 			snakeXLength[1] = 75;
 			snakeXLength[0] = 100;
@@ -79,9 +75,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 			snakeYLength[0] = 100;
 			
 		}
-		
 
-		
 		//draw title image
 		ImageIcon titleImage = new ImageIcon(Constant.TITLE_IMAGE);
 		titleImage.paintIcon(this, g, 25, 5);
@@ -126,7 +120,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		ImageIcon fruitimage = new ImageIcon(Constant.FRUIT_IMAGE);
 		if(fruitXpos[xpos] == snakeXLength[0] && fruitYpos[ypos] == snakeYLength[0])
 		{
-			score= score+5;
+			score = score + scoreLevel;
 			lengthofsnake++;
 			xpos = random.nextInt(34);
 			ypos = random.nextInt(23);
@@ -335,6 +329,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 				headRight = new ImageIcon(Constant.RIGHT_GREEN);
 				headDown = new ImageIcon(Constant.DOWN_GREEN);
 				tail = new ImageIcon(Constant.TAIL_GREEN);
+				scoreLevel = 5;
 				break;
 			}
 
@@ -344,6 +339,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 				headRight = new ImageIcon(Constant.RIGHT_BLUE);
 				headDown = new ImageIcon(Constant.DOWN_BLUE);
 				tail = new ImageIcon(Constant.TAIL_BLUE);
+				scoreLevel = 10;
 				break;
 			}
 
@@ -353,6 +349,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 				headRight = new ImageIcon(Constant.RIGHT_RED);
 				headDown = new ImageIcon(Constant.DOWN_RED);
 				tail = new ImageIcon(Constant.TAIL_RED);
+				scoreLevel = 15;
 				break;
 			}
 		}

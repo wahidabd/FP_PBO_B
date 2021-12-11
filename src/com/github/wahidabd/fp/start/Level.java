@@ -39,17 +39,19 @@ public class Level extends JPanel {
                 int y = e.getY();
 
                 if ((x >= 338 && x <= 567) && (y >= 271 && y <= 327)){
-                    System.out.println("EASY");
+                    action(90, 1);
                 }else if ((x >= 338 && x <= 567) && (y >= 347 && y <= 404)){
                     action(60, 2);
                 }else if ((x >= 338 && x <= 567) && (y >= 323 && y <= 479)){
                     action(30, 3);
                 }else if ((x >= 52 && x <= 79) && (y >= 40 && y <= 61)){
+                    Start start = new Start();
                     Functions.dispose();
+                    Functions.frame(start);
                 }
 
+                // get coordinate
                 System.out.println("X= " + x + ", Y=" + y);
-
             }
         });
     }
@@ -57,6 +59,7 @@ public class Level extends JPanel {
     private void action(int delay, int level){
 
         GamePlay gamePlay = new GamePlay(delay, level);
+        Functions.dispose();
         Functions.frame(gamePlay);
         repaint();
     }

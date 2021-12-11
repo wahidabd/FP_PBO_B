@@ -25,7 +25,10 @@ public class About extends JPanel {
                 int y = e.getY();
 
                 if ((x >= 52 && x <= 79) && (y >= 40 && y <= 61)){
+                    Start start = new Start();
+
                     Functions.dispose();
+                    Functions.frame(start);
                 }
 
             }

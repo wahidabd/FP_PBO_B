@@ -49,12 +49,14 @@ public class Start extends JPanel {
 
     private void toAbout(){
         About about = new About();
+        Functions.dispose();
         Functions.frame(about);
         repaint();
     }
 
     private void toLevel(){
         Level level = new Level();
+        Functions.dispose();
         Functions.frame(level);
         repaint();
     }
