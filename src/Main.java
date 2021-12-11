@@ -4,14 +4,16 @@ import javax.swing.*;
 
 public class Main {
 	public static void main(String[] args) {
-		// Welcome Scree
+		// Welcome Screen
 		Welcome welcome = new Welcome(30);
 		welcome.showAndWelcome();
 
-		// Game Play
+		// Create Frame
 		JFrame obj = new JFrame();
+		
+		// Gameplay
 		GamePlay gameplay = new GamePlay();
-
+		
 		obj.setBounds(10,10,905,700);
 		obj.setBackground(Color.DARK_GRAY);
 		obj.setResizable(false);

@@ -54,7 +54,7 @@ public class Welcome extends JWindow {
         private final ImageIcon image;
 
         public ImageSplash(){
-            image = new ImageIcon("welcomeImage.png");
+            image = new ImageIcon("BG Loading Screen_PNG.png");
         }
 
         @Override
