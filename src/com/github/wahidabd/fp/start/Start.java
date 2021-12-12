@@ -13,11 +13,11 @@ import java.awt.event.MouseEvent;
 
 public class Start extends JPanel {
 
-//    private final JFrame frame;
     private JButton button;
 
     private ImageIcon startImage;
     private ImageIcon aboutImage;
+    private ImageIcon scoreImage;
     
     private Sound soundMainMenu = new Sound();
     private Sound soundClick = new Sound();
@@ -36,14 +36,15 @@ public class Start extends JPanel {
     private void showPanel(){
         startImage = new ImageIcon(Constant.START_IMAGE);
         aboutImage = new ImageIcon(Constant.ABOUT_IMAGE);
-
+        scoreImage = new ImageIcon(Constant.SCORE_IMAGE);
+        
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 int x = e.getX();
                 int y = e.getY();
 
-                if ((x >= 342 && x <= 585) && (y >= 252 && y <= 300)){
+                if ((x >= 342 && x <= 585) && (y >= 252 && y <= 325)){
                     System.out.println("LEVEL");
                     soundClick.play();;
                     
@@ -52,10 +53,17 @@ public class Start extends JPanel {
                 }else if((x >= 342 && x <= 585) && (y >= 352 && y <= 400)){
                     System.out.println("ABOUT");
                     toAbout();
+
                     soundClick.play();;
                     soundMainMenu.stop();
+                }else if ((x >= 313 && x <= 591) && (y >= 427 && y <= 483)){
+                    toHighScore();
+
+                    soundClick.play();
                 }
 
+                // get coordinate
+                System.out.println("X= " + x + ", Y=" + y);
             }
         });
     }
@@ -74,6 +82,13 @@ public class Start extends JPanel {
         repaint();
     }
 
+    private void toHighScore(){
+        HighScore highScore = new HighScore();
+        Functions.dispose();
+        Functions.frame(highScore);
+        repaint();
+    }
+
     public void paint(Graphics g){
 
         // background
@@ -83,5 +98,6 @@ public class Start extends JPanel {
         // image icon
         startImage.paintIcon(this, g, 338, 269);
         aboutImage.paintIcon(this, g, 338, 348);
+        scoreImage.paintIcon(this, g, 338, 786);
     }
 }

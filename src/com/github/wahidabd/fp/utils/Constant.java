@@ -14,6 +14,7 @@ public class Constant {
     public static final String ABOUT_IMAGE = "assets/about.png";
     public static final String FRUIT_IMAGE = "assets/fruit.png";
     public static final String TITLE_IMAGE = "assets/rsz_header_gameplay.png";
+    public static final String SCORE_IMAGE = "assets/SCORE.png";
 
     //public static final String BACK_IMAGE = "assets/back.png";
     public static final String BACK_IMAGE = "assets/previous.png";
