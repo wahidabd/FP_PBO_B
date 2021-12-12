@@ -2,6 +2,7 @@ package com.github.wahidabd.fp.start;
 
 import com.github.wahidabd.fp.utils.Constant;
 import com.github.wahidabd.fp.utils.Functions;
+import com.github.wahidabd.fp.utils.Sound;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,10 +12,16 @@ import java.awt.event.MouseEvent;
 public class About extends JPanel {
 
     private final ImageIcon back;
+    private Sound soundMainMenu = new Sound();
+    private Sound soundClick = new Sound();
 
     public About(){
         setSize(Constant.WIDTH, Constant.HEIGHT);
         setFocusable(true);
+        
+        soundMainMenu.setFile(Constant.MUSIC_MAINMENU);
+        soundMainMenu.playMusic(0.7);
+        soundClick.setFile(Constant.MUSIC_CLICK);
 
         back = new ImageIcon(Constant.BACK_IMAGE);
 
@@ -29,6 +36,8 @@ public class About extends JPanel {
 
                     Functions.dispose();
                     Functions.frame(start);
+                    soundClick.play();
+                    soundMainMenu.stop();
                 }
 
             }

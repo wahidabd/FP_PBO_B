@@ -8,13 +8,15 @@ public class Constant {
 
     // Image
     public static final String BACKGROUND_IMAGE = "assets/background.png";
-    public static final String IMAGE_ABOUT_US = "assets/aboutus.png";
+    public static final String BACKGROUND_MAINMENU = "assets/mainMenu.png";
+    public static final String IMAGE_ABOUT_US = "assets/about_us.png";
     public static final String START_IMAGE = "assets/start.png";
     public static final String ABOUT_IMAGE = "assets/about.png";
     public static final String FRUIT_IMAGE = "assets/fruit.png";
-    public static final String TITLE_IMAGE = "assets/title.png";
+    public static final String TITLE_IMAGE = "assets/rsz_header_gameplay.png";
 
-    public static final String BACK_IMAGE = "assets/back.png";
+    //public static final String BACK_IMAGE = "assets/back.png";
+    public static final String BACK_IMAGE = "assets/previous.png";
     public static final String CHOOSE_LEVEL = "assets/choose_level.png";
     public static final String EASY_LEVEL = "assets/easy_level.png";
     public static final String MEDIUM_LEVEL = "assets/medium_level.png";
@@ -43,5 +45,7 @@ public class Constant {
     public static final String MUSIC_EAT      = "assets/Music_eat.wav";
     public static final String MUSIC_GAMEOVER = "assets/Music_gameover.wav";
     public static final String MUSIC_GAMEPLAY = "assets/Music_gameplay.wav"; 
+    public static final String MUSIC_MAINMENU = "assets/Music_MainMenu.wav"; 
+    public static final String MUSIC_CLICK    = "assets/Music_click.wav"; 
 
 }

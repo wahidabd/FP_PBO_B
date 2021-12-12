@@ -16,11 +16,18 @@ public class Level extends JPanel {
     private ImageIcon easy;
     private ImageIcon medium;
     private ImageIcon hard;
+    
+    private Sound soundMainMenu = new Sound();
+    private Sound soundClick = new Sound();
    
     public Level(){
         setFocusable(true);
         setOpaque(false);
-
+        
+        soundMainMenu.setFile(Constant.MUSIC_MAINMENU);
+        soundMainMenu.playMusic(0.7);
+        soundClick.setFile(Constant.MUSIC_CLICK);
+        
         showPanel();
     }
 
@@ -38,13 +45,28 @@ public class Level extends JPanel {
                 int x = e.getX();
                 int y = e.getY();
 
-                if ((x >= 338 && x <= 567) && (y >= 271 && y <= 327)){
+                if ((x >= 338 && x <= 567) && (y >= 271 && y <= 327))
+                {
+                	soundClick.play();
                     action(90, 1);
-                }else if ((x >= 338 && x <= 567) && (y >= 347 && y <= 404)){
+                    soundMainMenu.stop();
+                }
+                else if ((x >= 338 && x <= 567) && (y >= 347 && y <= 404))
+                {
+                	soundClick.play();
                     action(60, 2);
-                }else if ((x >= 338 && x <= 567) && (y >= 323 && y <= 479)){
+                    soundMainMenu.stop();
+                }
+                else if ((x >= 338 && x <= 567) && (y >= 323 && y <= 479))
+                {
+                	soundClick.play();
                     action(30, 3);
-                }else if ((x >= 52 && x <= 79) && (y >= 40 && y <= 61)){
+                    soundMainMenu.stop();
+                }
+                else if ((x >= 52 && x <= 79) && (y >= 40 && y <= 61))
+                {
+                	soundClick.play();
+                	soundMainMenu.stop();
                     Start start = new Start();
                     Functions.dispose();
                     Functions.frame(start);

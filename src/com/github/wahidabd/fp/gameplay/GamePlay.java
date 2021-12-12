@@ -123,13 +123,13 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 
 		// Draw Score
 		g.setColor(Color.white);
-		g.setFont(new Font("areal", Font.PLAIN, 14));
+		g.setFont(new Font("Arial", Font.PLAIN, 14));
 		g.drawString("Scores: " + score, 780, 30);
 
 		// Draw snake length
 		g.setColor(Color.white);
-		g.setFont(new Font("areal", Font.PLAIN, 14));
-		g.drawString("Length: " + lengthofsnake, 780, 50);
+		g.setFont(new Font("Arial", Font.PLAIN, 14));
+		g.drawString("Length: " + lengthofsnake, 780, 45);
 
 		// Change snake color according to level that player choose
 		snakeColor(level);

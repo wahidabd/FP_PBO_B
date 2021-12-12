@@ -2,6 +2,7 @@ package com.github.wahidabd.fp.start;
 
 import com.github.wahidabd.fp.utils.Constant;
 import com.github.wahidabd.fp.utils.Functions;
+import com.github.wahidabd.fp.utils.Sound;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,11 +18,18 @@ public class Start extends JPanel {
 
     private ImageIcon startImage;
     private ImageIcon aboutImage;
+    
+    private Sound soundMainMenu = new Sound();
+    private Sound soundClick = new Sound();
 
     public Start(){
         setFocusable(true);
         setOpaque(false);
-
+        
+        soundMainMenu.setFile(Constant.MUSIC_MAINMENU);
+		soundMainMenu.playMusic(0.7);
+		soundClick.setFile(Constant.MUSIC_CLICK);
+        
         showPanel();
     }
 
@@ -37,10 +45,15 @@ public class Start extends JPanel {
 
                 if ((x >= 342 && x <= 585) && (y >= 252 && y <= 300)){
                     System.out.println("LEVEL");
+                    soundClick.play();;
+                    
                     toLevel();
+                    soundMainMenu.stop();
                 }else if((x >= 342 && x <= 585) && (y >= 352 && y <= 400)){
                     System.out.println("ABOUT");
                     toAbout();
+                    soundClick.play();;
+                    soundMainMenu.stop();
                 }
 
             }
@@ -64,7 +77,7 @@ public class Start extends JPanel {
     public void paint(Graphics g){
 
         // background
-        ImageIcon background = new ImageIcon(Constant.BACKGROUND_IMAGE);
+        ImageIcon background = new ImageIcon(Constant.BACKGROUND_MAINMENU);
         background.paintIcon(this, g, 0, 0);
 
         // image icon
