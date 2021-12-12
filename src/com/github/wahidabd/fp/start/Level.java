@@ -11,7 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Level extends JPanel {
-	private ImageIcon chooseLevel;
+//	private ImageIcon chooseLevel;
     private ImageIcon back;
     private ImageIcon easy;
     private ImageIcon medium;
@@ -32,7 +32,7 @@ public class Level extends JPanel {
     }
 
     private void showPanel(){
-        chooseLevel = new ImageIcon(Constant.CHOOSE_LEVEL);
+//        chooseLevel = new ImageIcon(Constant.CHOOSE_LEVEL);
         back = new ImageIcon(Constant.BACK_IMAGE);
         easy = new ImageIcon(Constant.EASY_LEVEL);
         medium = new ImageIcon(Constant.MEDIUM_LEVEL);
@@ -93,7 +93,7 @@ public class Level extends JPanel {
         background.paintIcon(this, g, 0, 0);
 
         // position all image
-        chooseLevel.paintIcon(this, g, 254, 32);
+//      chooseLevel.paintIcon(this, g, 254, 32);
         back.paintIcon(this, g, 49, 36);
         easy.paintIcon(this, g, 338, 271);
         medium.paintIcon(this, g, 338, 347);

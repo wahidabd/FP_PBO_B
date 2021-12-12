@@ -7,8 +7,8 @@ public class Constant {
     public static final int HEIGHT = 700;
 
     // Image
-    public static final String BACKGROUND_IMAGE = "assets/background.png";
-    public static final String BACKGROUND_MAINMENU = "assets/mainMenu.png";
+    public static final String BACKGROUND_IMAGE = "assets/Dificult.png";
+    public static final String BACKGROUND_MAINMENU = "assets/mainMenu2.png";
     public static final String IMAGE_ABOUT_US = "assets/about_Us.png";
     public static final String START_IMAGE = "assets/start.png";
     public static final String ABOUT_IMAGE = "assets/about.png";

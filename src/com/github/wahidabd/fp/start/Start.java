@@ -81,9 +81,7 @@ public class Start extends JPanel {
         background.paintIcon(this, g, 0, 0);
 
         // image icon
-        startImage.paintIcon(this, g, 338, 250);
-        aboutImage.paintIcon(this, g, 338, 350);
-
+        startImage.paintIcon(this, g, 338, 269);
+        aboutImage.paintIcon(this, g, 338, 348);
     }
-
 }
