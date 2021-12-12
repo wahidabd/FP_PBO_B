@@ -20,7 +20,7 @@ public class Welcome extends JWindow {
         panel.setOpaque(false);
 
         // Progress bar top
-        JProgressBar progressBar = new JProgressBar(0, 100);
+        JProgressBar progressBar = new JProgressBar(0, 500);
         progressBar.setStringPainted(false);
         progressBar.setPreferredSize(new Dimension(getWidth() -10, 15));
         progressBar.setForeground(Color.GREEN);
@@ -32,7 +32,7 @@ public class Welcome extends JWindow {
 
         setVisible(true);
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 500; i++) {
             try {
                 progressBar.setValue(i);
                 Thread.sleep(duration);
@@ -56,7 +56,7 @@ public class Welcome extends JWindow {
         private final ImageIcon image;
 
         public ImageSplash(){
-            image = new ImageIcon("assets/welcomeImage.png");
+            image = new ImageIcon("assets/loading_Screen.png");
         }
 
         @Override

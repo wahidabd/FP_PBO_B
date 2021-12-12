@@ -26,11 +26,11 @@ public class Start extends JPanel {
         setFocusable(true);
         setOpaque(false);
         
-        soundMainMenu.setFile(Constant.MUSIC_MAINMENU);
-		soundMainMenu.playMusic(0.7);
-		soundClick.setFile(Constant.MUSIC_CLICK);
-        
         showPanel();
+        soundMainMenu.setFile(Constant.MUSIC_MAINMENU);
+   		soundMainMenu.playMusic(0.5);
+   		soundClick.setFile(Constant.MUSIC_CLICK);
+           
     }
 
     private void showPanel(){

@@ -9,7 +9,7 @@ public class Constant {
     // Image
     public static final String BACKGROUND_IMAGE = "assets/background.png";
     public static final String BACKGROUND_MAINMENU = "assets/mainMenu.png";
-    public static final String IMAGE_ABOUT_US = "assets/about_us.png";
+    public static final String IMAGE_ABOUT_US = "assets/about_Us.png";
     public static final String START_IMAGE = "assets/start.png";
     public static final String ABOUT_IMAGE = "assets/about.png";
     public static final String FRUIT_IMAGE = "assets/fruit.png";
