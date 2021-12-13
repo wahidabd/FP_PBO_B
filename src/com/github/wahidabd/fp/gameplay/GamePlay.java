@@ -54,17 +54,16 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 	private int scoreLevel;
 
 	// Create array to store all possible positions that fruit will appear 
-	private int [] fruitXpos = {25,50,75,100,125,150,175,200,225,250,275,300,325,
-			350,375,400,425,450,475,500,525,550,575,600,
-			625,650,675,700,725,750,775,800,825,850};
+	private int [] fruitXpos = {75,100,125,150,175,200,225,250,600,
+			625,650,675,700,725,750,775};
 
-	private int [] fruitYpos = {75,100,125,150,175,200,225,250,275,300,325,350,
-			375,400,425,450,475,500,525,550,575,600,625};
+	private int [] fruitYpos = {125,150,175,200,225,250,275,300,325,350,
+			375,400,425,450,475,525,550};
 
 	// Generate a random fruit position that comes from all the possibilities
 	private final Random random = new Random();
-	private int xpos = random.nextInt(34);
-	private int ypos = random.nextInt(23);
+	private int xpos = random.nextInt(16); 
+	private int ypos = random.nextInt(17); 
 
 	// Sound Effects
 	private Sound soundEat = new Sound();
@@ -86,20 +85,20 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 
 		// Play sound for gameplay
 		soundGameplay.setFile(Constant.MUSIC_GAMEPLAY);
-		soundGameplay.playMusic(0.5);
+		soundGameplay.playMusic(0.3);
 	}
 
 
 	public void paint(Graphics g) {
 		// Default snake position
 		if (moves == 0) {
-			snakeXlength[2] = 50;
-			snakeXlength[1] = 75;
-			snakeXlength[0] = 100;
+			snakeXlength[2] = 150;
+			snakeXlength[1] = 175;
+			snakeXlength[0] = 200;
 
-			snakeYlength[2] = 100;
-			snakeYlength[1] = 100;
-			snakeYlength[0] = 100;
+			snakeYlength[2] = 175;
+			snakeYlength[1] = 175;
+			snakeYlength[0] = 175;
 
 		}
 
@@ -115,7 +114,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 
 		// Draw border for gameplay
 		g.setColor(Color.DARK_GRAY);
-		g.drawRect(24, 74, 851, 577);
+		g.drawRect(24, 74, 851, 575);
 
 		// Set Background for the gameplay
 		g.setColor(Color.black);
@@ -130,6 +129,14 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		g.setColor(Color.white);
 		g.setFont(new Font("Arial", Font.PLAIN, 14));
 		g.drawString("Length: " + lengthofsnake, 780, 45);
+
+		// Draw walls for medium level
+		if (level == 2)
+			mediumLevelWall(g);
+
+		// Draw walls for hard level
+		if (level == 3)
+			hardLevelWall(g);
 
 		// Change snake color according to level that player choose
 		snakeColor(level);
@@ -173,8 +180,8 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 			lengthofsnake++;
 
 			// Fruit will appear again in random position
-			xpos = random.nextInt(34);
-			ypos = random.nextInt(23);
+			xpos = random.nextInt(16);
+			ypos = random.nextInt(17);
 		}
 
 		// Paint the fruit image
@@ -185,38 +192,183 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 			// If snake head hit his own tail
 			if(snakeXlength[i] == snakeXlength[0] && snakeYlength[i] == snakeYlength[0])
 			{
-				// play sound if gameover
-				soundGameOver.setFile(Constant.MUSIC_GAMEOVER);
-				soundGameOver.play();
+				gameOver(g);
+			}
 
-				// Snake cant move anywhere else
-				right = false;
-				left = false;
-				up = false;
-				down = false;
+			// Game over condition for medium level
+			else if (level == 2)
+			{
+				// If snake head hit right border 
+				if (snakeXlength[i] > 800) 
+					gameOver(g);
 
-				// call checkscore method to check the high score
-				CheckScore();
+				// If snake head hit left border
+				else if (snakeXlength[i] < 75) 
+					gameOver(g);
 
-				// Display game over message and final score
-				g.setColor(Color.RED);
-				g.setFont(new Font("arial", Font.BOLD, 40));
-				g.drawString("Game Over! Score: " + score, 250, 300);
+				// If snake head hit top border
+				else if (snakeYlength[i] < 125) 
+					gameOver(g);
 
-				// Display high Score 
-				g.setColor(Color.WHITE);
-				g.setFont(new Font("arial",Font.BOLD,20));
-				g.drawString("HighScore: " + highScore,360,250);
+				// If snake head hit bottom border
+				else if (snakeYlength[i] >= 600) 
+					gameOver(g);
+			}
 
-				// Display press enter to restart the game
-				g.setColor(Color.WHITE);
-				g.setFont(new Font("arial", Font.BOLD, 20));
-				g.drawString("Press Enter to restart", 350, 340);
+			// Game over condition for hard level
+			else if (level == 3)
+			{
+				// If snake head hit right border 
+				if (snakeXlength[i] > 800) 
+					gameOver(g);
+
+				// If snake head hit left border
+				else if (snakeXlength[i] < 75) 
+					gameOver(g);
+
+				// If snake head hit top border
+				else if (snakeYlength[i] < 125) 
+					gameOver(g);
+
+				// If snake head hit bottom border
+				else if (snakeYlength[i] >= 600) 
+					gameOver(g);
+
+				// if snake head hit first additional wall
+				else if (snakeXlength[i] >= 280 && snakeXlength[i] <= 550 && snakeYlength[i] == 250) 
+					gameOver(g);
+
+				// if snake head hit first additional wall
+				else if (snakeXlength[i] >= 280 && snakeXlength[i] <= 550 && snakeYlength[i] == 450) 
+					gameOver(g);
 
 			}
+
 		}
 
 		g.dispose();
+	}
+
+	// Method to change snake color based on level that user choose
+	private void snakeColor(int level){
+		switch (level){
+
+		// If user choose easy 
+		case 1: {
+			headLeft = new ImageIcon(Constant.LEFT_GREEN);
+			headUp = new ImageIcon(Constant.UP_GREEN);
+			headRight = new ImageIcon(Constant.RIGHT_GREEN);
+			headDown = new ImageIcon(Constant.DOWN_GREEN);
+			tail = new ImageIcon(Constant.TAIL_GREEN);
+			scoreLevel = 5;
+			break;
+		}
+
+		// If user choose medium
+		case 2: {
+			headLeft = new ImageIcon(Constant.LEFT_BLUE);
+			headUp = new ImageIcon(Constant.UP_BLUE);
+			headRight = new ImageIcon(Constant.RIGHT_BLUE);
+			headDown = new ImageIcon(Constant.DOWN_BLUE);
+			tail = new ImageIcon(Constant.TAIL_BLUE);
+			scoreLevel = 10;
+			break;
+		}
+
+		// If user choose hard
+		case 3: {
+			headLeft = new ImageIcon(Constant.LEFT_RED);
+			headUp = new ImageIcon(Constant.UP_RED);
+			headRight = new ImageIcon(Constant.RIGHT_RED);
+			headDown = new ImageIcon(Constant.DOWN_RED);
+			tail = new ImageIcon(Constant.TAIL_RED);
+			scoreLevel = 15;
+			break;
+		}
+		
+		}
+	}
+
+	private void gameOver(Graphics g) {
+		// play sound if gameover
+		soundGameOver.setFile(Constant.MUSIC_GAMEOVER);
+		soundGameOver.play();
+
+		// Snake cant move anywhere else
+		right = false;
+		left = false;
+		up = false;
+		down = false;
+
+		// call checkscore method to check the high score
+		CheckScore();
+
+		// Display game over message and final score
+		g.setColor(Color.RED);
+		g.setFont(new Font("arial", Font.BOLD, 40));
+		g.drawString("Game Over! Score: " + score, 250, 300);
+
+		// Display high Score 
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("arial",Font.BOLD,20));
+		g.drawString("HighScore: " + highScore,360,250);
+
+		// Display press enter to restart the game
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("arial", Font.BOLD, 20));
+		g.drawString("Press Enter to restart", 350, 340);
+
+		g.dispose();
+	}
+
+	private void mediumLevelWall(Graphics g)
+	{
+		ImageIcon wall = new ImageIcon(Constant.WALL);
+
+		// Top border wall
+		for (int x = 25; x <= 850; x += 25)
+			wall.paintIcon(this,g,x,74);
+
+		// Bottom border wall
+		for (int x = 25; x <= 850; x += 25)
+			wall.paintIcon(this,g,x,625);
+
+		// Left border wall
+		for (int y = 75; y <= 600; y += 25)
+			wall.paintIcon(this,g,25,y);
+
+		// right border wall
+		for (int y = 75; y <= 600; y += 25)
+			wall.paintIcon(this,g,850,y);
+	}
+
+	private void hardLevelWall(Graphics g)
+	{
+		ImageIcon wall = new ImageIcon(Constant.WALL);
+
+		// Top border wall
+		for (int x = 25; x <= 850; x += 25)
+			wall.paintIcon(this,g,x,74);
+
+		// Bottom border wall
+		for (int x = 25; x <= 850; x += 25)
+			wall.paintIcon(this,g,x,625);
+
+		// Left border wall
+		for (int y = 75; y <= 600; y += 25)
+			wall.paintIcon(this,g,25,y);
+
+		// right border wall
+		for (int y = 75; y <= 600; y += 25)
+			wall.paintIcon(this,g,850,y);
+
+		// first additional wall
+		for (int x = 300; x <= 550; x += 25)
+			wall.paintIcon(this,g,x,250);
+
+		// second additional wall
+		for (int x = 300; x <= 550; x += 25)
+			wall.paintIcon(this,g,x,450);
 	}
 
 	private String getHighScore() {
@@ -310,14 +462,16 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 				if (n==0) {
 					// Snake move 25 pixel to the right 
 					snakeXlength[n] = snakeXlength[n]+25;
-				} else {
+				} 
+				else {
 					snakeXlength[n] = snakeXlength[n-1];
 				}
 
-				// If snake reach right border then snake will appear in left border
-				if(snakeXlength[n] >850) {
+				// If level is easy and snake reach right border then snake will appear in left border
+				if(snakeXlength[n] >850 && level == 1) {
 					snakeXlength[n] = 25;
 				}
+
 			}
 			repaint();
 		}
@@ -334,19 +488,21 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 				if (n==0) {
 					// Snake move 25 pixel to the left
 					snakeXlength[n] = snakeXlength[n]-25;
-				} else {
+				} 
+				else {
 					snakeXlength[n] = snakeXlength[n-1];
 				}
 
-				// If snake reach left border then snake will appear in right border
-				if(snakeXlength[n] < 25) {
+				// If level is easy and snake reach left border then snake will appear in right border
+				if(snakeXlength[n] < 25 && level == 1) {
 					snakeXlength[n] = 850;
 				}
+
 
 			}
 			repaint();			
 		}
-		
+
 		// Snake move up
 		if(up) 
 		{
@@ -355,22 +511,29 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 				snakeXlength[n+1] = snakeXlength[n];
 			}
 
-			for(int n = lengthofsnake; n>=0; n--) {
-				if (n==0) {
+			for(int n = lengthofsnake; n>=0; n--) 
+			{
+				if (n==0) 
+				{
 					// Snake move 25 pixel to up
 					snakeYlength[n] = snakeYlength[n]-25;
-				} else {
+				} 
+				else 
+				{
 					snakeYlength[n] = snakeYlength[n-1];
 				}
-				// If snake reach top border then snake will appear in bottom border
-				if(snakeYlength[n] < 75) {
+
+				// If level is easy and snake reach top border then snake will appear in bottom border
+				if(snakeYlength[n] < 75 && level == 1) {
 					snakeYlength[n] = 625;
 				}
+
+
 			}
 			repaint();
 
 		}
-		
+
 		// Snake move down
 		if(down) 
 		{
@@ -389,8 +552,9 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 				{
 					snakeYlength[n] = snakeYlength[n-1];
 				}
-				// If snake reach bottom border then snake will appear in top border
-				if(snakeYlength[n] > 625) {
+
+				// If level is easy and snake reach bottom border then snake will appear in top border and
+				if(snakeYlength[n] > 625 && level == 1) {
 					snakeYlength[n] = 75;
 				}
 			}
@@ -400,7 +564,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 
 
 	}
-	
+
 	@Override
 	public void keyPressed(KeyEvent e) {
 
@@ -412,7 +576,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 			lengthofsnake=3;
 			repaint();
 		}
-		
+
 		// Snake move right if right keypad button is pressed
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT)
 		{
@@ -434,7 +598,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 
 
 		}
-		
+
 		// Snake move left if left keypad button is pressed
 		if(e.getKeyCode() == KeyEvent.VK_LEFT)
 		{
@@ -456,7 +620,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 
 
 		}
-		
+
 		// Snake move up if up keypad button is pressed
 		if(e.getKeyCode() == KeyEvent.VK_UP)
 		{
@@ -477,7 +641,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 
 
 		}
-		
+
 		// Snake move down if down keypad button is pressed
 		if(e.getKeyCode() == KeyEvent.VK_DOWN)
 		{
@@ -498,45 +662,6 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 			right = false;
 
 
-		}
-	}
-	
-	// Method to change snake color based on level that user choose
-	private void snakeColor(int level){
-		switch (level){
-		
-		// If user choose easy 
-		case 1: {
-			headLeft = new ImageIcon(Constant.LEFT_GREEN);
-			headUp = new ImageIcon(Constant.UP_GREEN);
-			headRight = new ImageIcon(Constant.RIGHT_GREEN);
-			headDown = new ImageIcon(Constant.DOWN_GREEN);
-			tail = new ImageIcon(Constant.TAIL_GREEN);
-			scoreLevel = 5;
-			break;
-		}
-		
-		// If user choose medium
-		case 2: {
-			headLeft = new ImageIcon(Constant.LEFT_BLUE);
-			headUp = new ImageIcon(Constant.UP_BLUE);
-			headRight = new ImageIcon(Constant.RIGHT_BLUE);
-			headDown = new ImageIcon(Constant.DOWN_BLUE);
-			tail = new ImageIcon(Constant.TAIL_BLUE);
-			scoreLevel = 10;
-			break;
-		}
-
-		// If user choose hard
-		case 3: {
-			headLeft = new ImageIcon(Constant.LEFT_RED);
-			headUp = new ImageIcon(Constant.UP_RED);
-			headRight = new ImageIcon(Constant.RIGHT_RED);
-			headDown = new ImageIcon(Constant.DOWN_RED);
-			tail = new ImageIcon(Constant.TAIL_RED);
-			scoreLevel = 15;
-			break;
-		}
 		}
 	}
 

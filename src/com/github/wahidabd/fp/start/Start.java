@@ -28,7 +28,7 @@ public class Start extends JPanel {
         
         showPanel();
         soundMainMenu.setFile(Constant.MUSIC_MAINMENU);
-   		soundMainMenu.playMusic(0.4);
+   		soundMainMenu.playMusic(0.3);
    		soundClick.setFile(Constant.MUSIC_CLICK);
            
     }

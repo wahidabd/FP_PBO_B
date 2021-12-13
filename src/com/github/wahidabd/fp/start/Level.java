@@ -25,7 +25,7 @@ public class Level extends JPanel {
         setOpaque(false);
         
         soundMainMenu.setFile(Constant.MUSIC_MAINMENU);
-        soundMainMenu.playMusic(0.4);
+        soundMainMenu.playMusic(0.3);
         soundClick.setFile(Constant.MUSIC_CLICK);
         
         showPanel();
@@ -48,7 +48,7 @@ public class Level extends JPanel {
                 if ((x >= 338 && x <= 567) && (y >= 271 && y <= 327))
                 {
                 	soundClick.play();
-                    action(90, 1);
+                    action(75, 1);
                     soundMainMenu.stop();
                 }
                 else if ((x >= 338 && x <= 567) && (y >= 347 && y <= 404))
@@ -60,7 +60,7 @@ public class Level extends JPanel {
                 else if ((x >= 338 && x <= 567) && (y >= 323 && y <= 479))
                 {
                 	soundClick.play();
-                    action(30, 3);
+                    action(45, 3);
                     soundMainMenu.stop();
                 }
                 else if ((x >= 52 && x <= 79) && (y >= 40 && y <= 61))

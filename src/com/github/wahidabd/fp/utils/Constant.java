@@ -7,16 +7,17 @@ public class Constant {
     public static final int HEIGHT = 700;
 
     // Image
-    public static final String BACKGROUND_IMAGE = "assets/Dificult.png";
+    public static final String BACKGROUND_IMAGE    = "assets/Dificult.png";
     public static final String BACKGROUND_MAINMENU = "assets/mainMenu2.png";
-    public static final String IMAGE_ABOUT_US = "assets/about_Us.png";
-    public static final String START_IMAGE = "assets/start.png";
-    public static final String ABOUT_IMAGE = "assets/about.png";
-    public static final String FRUIT_IMAGE = "assets/fruit.png";
-    public static final String TITLE_IMAGE = "assets/rsz_header_gameplay.png";
-    public static final String SCORE_IMAGE = "assets/SCORE.png";
+    public static final String IMAGE_ABOUT_US      = "assets/about_Us.png";
+    public static final String START_IMAGE         = "assets/start.png";
+    public static final String ABOUT_IMAGE         = "assets/about.png";
+    public static final String FRUIT_IMAGE         = "assets/fruit.png";
+    public static final String TITLE_IMAGE         = "assets/rsz_header_gameplay.png";
+    public static final String SCORE_IMAGE         = "assets/SCORE.png";
+    public static final String WALL                = "assets/wall.png";
 
-    //public static final String BACK_IMAGE = "assets/back.png";
+    
     public static final String BACK_IMAGE = "assets/previous.png";
     public static final String CHOOSE_LEVEL = "assets/choose_level.png";
     public static final String EASY_LEVEL = "assets/easy_level.png";

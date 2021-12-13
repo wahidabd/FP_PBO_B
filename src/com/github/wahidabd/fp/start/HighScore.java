@@ -20,7 +20,7 @@ public class HighScore extends JPanel {
         setFocusable(true);
         
         soundMainMenu.setFile(Constant.MUSIC_MAINMENU);
-        soundMainMenu.playMusic(0.4);
+        soundMainMenu.playMusic(0.3);
         soundClick.setFile(Constant.MUSIC_CLICK);
 
         back = new ImageIcon(Constant.BACK_IMAGE);
