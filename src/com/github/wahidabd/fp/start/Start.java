@@ -28,7 +28,7 @@ public class Start extends JPanel {
         
         showPanel();
         soundMainMenu.setFile(Constant.MUSIC_MAINMENU);
-   		soundMainMenu.playMusic(0.5);
+   		soundMainMenu.playMusic(0.4);
    		soundClick.setFile(Constant.MUSIC_CLICK);
            
     }
@@ -60,6 +60,7 @@ public class Start extends JPanel {
                     toHighScore();
 
                     soundClick.play();
+                    soundMainMenu.stop();
                 }
 
                 // get coordinate

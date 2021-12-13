@@ -20,7 +20,7 @@ public class About extends JPanel {
         setFocusable(true);
         
         soundMainMenu.setFile(Constant.MUSIC_MAINMENU);
-        soundMainMenu.playMusic(0.7);
+        soundMainMenu.playMusic(0.4);
         soundClick.setFile(Constant.MUSIC_CLICK);
 
         back = new ImageIcon(Constant.BACK_IMAGE);
