@@ -8,6 +8,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class HighScore extends JPanel {
 
@@ -44,11 +47,37 @@ public class HighScore extends JPanel {
         });
     }
 
+    private String getHighScore() {
+        FileReader readFile = null;
+        BufferedReader reader = null;
+        try{
+            readFile = new FileReader("highscore.dat");
+            reader = new BufferedReader(readFile);
+            return reader.readLine();
+        }
+        catch (Exception e){
+            return "Nobody:0";
+        }
+        finally
+        {
+            try {
+                if(reader != null) reader.close();
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void paint(Graphics g){
         ImageIcon highScore = new ImageIcon(Constant.SCORE_IMAGE);
         highScore.paintIcon(this, g, 0, 0);
 
         back.paintIcon(this, g, 49, 36);
 
+        String textHighScore = getHighScore();
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.BOLD, 34));
+        g.drawString(textHighScore, 277, 300);
     }
 }
