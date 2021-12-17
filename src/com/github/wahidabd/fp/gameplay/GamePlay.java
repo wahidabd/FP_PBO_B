@@ -20,8 +20,8 @@ import java.util.Random;
 public class GamePlay extends JPanel implements KeyListener, ActionListener {
 
 	// Create an array to store snake length with maximum length is 750
-	private final int[] snakeXlength = new int[750];
-	private final int[] snakeYlength = new int[750];
+	private final int[] snakeXLength = new int[750];
+	private final int[] snakeYLength = new int[750];
 
 	// Create an variable to store level 
 	private final int level;
@@ -92,13 +92,13 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 	public void paint(Graphics g) {
 		// Default snake position
 		if (moves == 0) {
-			snakeXlength[2] = 150;
-			snakeXlength[1] = 175;
-			snakeXlength[0] = 200;
+			snakeXLength[2] = 150;
+			snakeXLength[1] = 175;
+			snakeXLength[0] = 200;
 
-			snakeYlength[2] = 175;
-			snakeYlength[1] = 175;
-			snakeYlength[0] = 175;
+			snakeYLength[2] = 175;
+			snakeYLength[1] = 175;
+			snakeYLength[0] = 175;
 
 		}
 
@@ -142,24 +142,24 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		snakeColor(level);
 
 		// Add default snake position with head facing right
-		headRight.paintIcon(this,g , snakeXlength[0], snakeYlength[0]);
+		headRight.paintIcon(this,g , snakeXLength[0], snakeYLength[0]);
 
 		// Paint different image if different button is pressed
 		for(int i = 0; i< lengthofSnake; i++) {
 			if(i == 0 && right) 
-				headRight.paintIcon(this,g , snakeXlength[i], snakeYlength[i]);
+				headRight.paintIcon(this,g , snakeXLength[i], snakeYLength[i]);
 
 			if(i == 0 && left) 
-				headLeft.paintIcon(this,g , snakeXlength[i], snakeYlength[i]);
+				headLeft.paintIcon(this,g , snakeXLength[i], snakeYLength[i]);
 
 			if(i == 0 && down) 
-				headDown.paintIcon(this,g , snakeXlength[i], snakeYlength[i]);
+				headDown.paintIcon(this,g , snakeXLength[i], snakeYLength[i]);
 
 			if(i == 0 && up) 
-				headUp.paintIcon(this,g , snakeXlength[i], snakeYlength[i]);
+				headUp.paintIcon(this,g , snakeXLength[i], snakeYLength[i]);
 
 			if(i != 0) 
-				tail.paintIcon(this,g , snakeXlength[i], snakeYlength[i]);
+				tail.paintIcon(this,g , snakeXLength[i], snakeYLength[i]);
 
 		}
 
@@ -167,7 +167,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		ImageIcon fruitimage = new ImageIcon(Constant.FRUIT_IMAGE);
 
 		// If fruit is eaten by snake then snake will be bigger and fruit will appear somewhere else 
-		if(fruitXpos[xpos] == snakeXlength[0] && fruitYpos[ypos] == snakeYlength[0])
+		if(fruitXpos[xpos] == snakeXLength[0] && fruitYpos[ypos] == snakeYLength[0])
 		{
 			// play sound if fruit is eaten
 			soundEat.setFile(Constant.MUSIC_EAT);
@@ -190,7 +190,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		for(int i = 1; i<lengthofSnake; i++)
 		{
 			// If snake head hit his own tail
-			if(snakeXlength[i] == snakeXlength[0] && snakeYlength[i] == snakeYlength[0])
+			if(snakeXLength[i] == snakeXLength[0] && snakeYLength[i] == snakeYLength[0])
 			{
 				gameOver(g);
 			}
@@ -199,19 +199,19 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 			else if (level == 2)
 			{
 				// If snake head hit right border 
-				if (snakeXlength[i] > 800) 
+				if (snakeXLength[i] > 800)
 					gameOver(g);
 
 				// If snake head hit left border
-				else if (snakeXlength[i] < 75) 
+				else if (snakeXLength[i] < 75)
 					gameOver(g);
 
 				// If snake head hit top border
-				else if (snakeYlength[i] < 125) 
+				else if (snakeYLength[i] < 125)
 					gameOver(g);
 
 				// If snake head hit bottom border
-				else if (snakeYlength[i] >= 600) 
+				else if (snakeYLength[i] >= 600)
 					gameOver(g);
 			}
 
@@ -219,27 +219,27 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 			else if (level == 3)
 			{
 				// If snake head hit right border 
-				if (snakeXlength[i] > 800) 
+				if (snakeXLength[i] > 800)
 					gameOver(g);
 
 				// If snake head hit left border
-				else if (snakeXlength[i] < 75) 
+				else if (snakeXLength[i] < 75)
 					gameOver(g);
 
 				// If snake head hit top border
-				else if (snakeYlength[i] < 125) 
+				else if (snakeYLength[i] < 125)
 					gameOver(g);
 
 				// If snake head hit bottom border
-				else if (snakeYlength[i] >= 600) 
+				else if (snakeYLength[i] >= 600)
 					gameOver(g);
 
 				// if snake head hit first additional wall
-				else if (snakeXlength[i] >= 280 && snakeXlength[i] <= 550 && snakeYlength[i] == 250) 
+				else if (snakeXLength[i] >= 280 && snakeXLength[i] <= 550 && snakeYLength[i] == 250)
 					gameOver(g);
 
 				// if snake head hit first additional wall
-				else if (snakeXlength[i] >= 280 && snakeXlength[i] <= 550 && snakeYlength[i] == 450) 
+				else if (snakeXLength[i] >= 280 && snakeXLength[i] <= 550 && snakeYLength[i] == 450)
 					gameOver(g);
 
 			}
@@ -412,7 +412,6 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 				try {
 					scoreFile.createNewFile();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -431,14 +430,12 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 			}
 			finally
 			{
-				try 
-				{
+				try {
 					if (writer != null) 
 						writer.close();
 				}
-				catch (Exception e)
-				{
-
+				catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		}
@@ -455,21 +452,21 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		{
 			for(int n = lengthofSnake-1; n>=0;n--)
 			{
-				snakeYlength[n+1] = snakeYlength[n];
+				snakeYLength[n+1] = snakeYLength[n];
 			}
 			for(int n = lengthofSnake; n>=0; n--) 
 			{
 				if (n==0) {
 					// Snake move 25 pixel to the right 
-					snakeXlength[n] = snakeXlength[n]+25;
+					snakeXLength[n] = snakeXLength[n]+25;
 				} 
 				else {
-					snakeXlength[n] = snakeXlength[n-1];
+					snakeXLength[n] = snakeXLength[n-1];
 				}
 
 				// If level is easy and snake reach right border then snake will appear in left border
-				if(snakeXlength[n] >850 && level == 1) {
-					snakeXlength[n] = 25;
+				if(snakeXLength[n] >850 && level == 1) {
+					snakeXLength[n] = 25;
 				}
 
 			}
@@ -481,21 +478,21 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		{
 			for(int n = lengthofSnake-1; n>=0;n--)
 			{
-				snakeYlength[n+1] = snakeYlength[n];
+				snakeYLength[n+1] = snakeYLength[n];
 			}
 			for(int n = lengthofSnake; n>=0; n--) 
 			{
 				if (n==0) {
 					// Snake move 25 pixel to the left
-					snakeXlength[n] = snakeXlength[n]-25;
+					snakeXLength[n] = snakeXLength[n]-25;
 				} 
 				else {
-					snakeXlength[n] = snakeXlength[n-1];
+					snakeXLength[n] = snakeXLength[n-1];
 				}
 
 				// If level is easy and snake reach left border then snake will appear in right border
-				if(snakeXlength[n] < 25 && level == 1) {
-					snakeXlength[n] = 850;
+				if(snakeXLength[n] < 25 && level == 1) {
+					snakeXLength[n] = 850;
 				}
 
 
@@ -508,7 +505,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		{
 			for(int n = lengthofSnake-1; n>=0;n--)
 			{
-				snakeXlength[n+1] = snakeXlength[n];
+				snakeXLength[n+1] = snakeXLength[n];
 			}
 
 			for(int n = lengthofSnake; n>=0; n--) 
@@ -516,16 +513,16 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 				if (n==0) 
 				{
 					// Snake move 25 pixel to up
-					snakeYlength[n] = snakeYlength[n]-25;
+					snakeYLength[n] = snakeYLength[n]-25;
 				} 
 				else 
 				{
-					snakeYlength[n] = snakeYlength[n-1];
+					snakeYLength[n] = snakeYLength[n-1];
 				}
 
 				// If level is easy and snake reach top border then snake will appear in bottom border
-				if(snakeYlength[n] < 75 && level == 1) {
-					snakeYlength[n] = 625;
+				if(snakeYLength[n] < 75 && level == 1) {
+					snakeYLength[n] = 625;
 				}
 
 
@@ -539,23 +536,23 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		{
 			for(int n = lengthofSnake-1; n>=0;n--)
 			{
-				snakeXlength[n+1] = snakeXlength[n];
+				snakeXLength[n+1] = snakeXLength[n];
 			}
 
 			for(int n = lengthofSnake; n>=0; n--) {
 				if (n==0) 
 				{
 					// Snake move 25 pixel to bottom
-					snakeYlength[n] = snakeYlength[n]+25;
+					snakeYLength[n] = snakeYLength[n]+25;
 				} 
 				else 
 				{
-					snakeYlength[n] = snakeYlength[n-1];
+					snakeYLength[n] = snakeYLength[n-1];
 				}
 
 				// If level is easy and snake reach bottom border then snake will appear in top border and
-				if(snakeYlength[n] > 625 && level == 1) {
-					snakeYlength[n] = 75;
+				if(snakeYLength[n] > 625 && level == 1) {
+					snakeYLength[n] = 75;
 				}
 			}
 
