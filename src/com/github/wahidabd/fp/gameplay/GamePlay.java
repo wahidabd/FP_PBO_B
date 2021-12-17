@@ -42,7 +42,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 	private ImageIcon tail;
 
 	// Create variable to initialize the length of snake
-	private int lengthofsnake = 3;
+	private int lengthofSnake = 3;
 
 	// Create timer to control snake speed
 	private final Timer timer;
@@ -128,7 +128,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		// Draw snake length
 		g.setColor(Color.white);
 		g.setFont(new Font("Arial", Font.PLAIN, 14));
-		g.drawString("Length: " + lengthofsnake, 780, 45);
+		g.drawString("Length: " + lengthofSnake, 780, 45);
 
 		// Draw walls for medium level
 		if (level == 2)
@@ -145,7 +145,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		headRight.paintIcon(this,g , snakeXlength[0], snakeYlength[0]);
 
 		// Paint different image if different button is pressed
-		for(int i = 0; i< lengthofsnake; i++) {
+		for(int i = 0; i< lengthofSnake; i++) {
 			if(i == 0 && right) 
 				headRight.paintIcon(this,g , snakeXlength[i], snakeYlength[i]);
 
@@ -177,7 +177,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 			score = score + scoreLevel;
 
 			// Increase snake length by one
-			lengthofsnake++;
+			lengthofSnake++;
 
 			// Fruit will appear again in random position
 			xpos = random.nextInt(16);
@@ -187,7 +187,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		// Paint the fruit image
 		fruitimage.paintIcon(this,g,fruitXpos[xpos], fruitYpos[ypos]);
 
-		for(int i = 1; i<lengthofsnake; i++)
+		for(int i = 1; i<lengthofSnake; i++)
 		{
 			// If snake head hit his own tail
 			if(snakeXlength[i] == snakeXlength[0] && snakeYlength[i] == snakeYlength[0])
@@ -301,7 +301,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		down = false;
 
 		// call checkscore method to check the high score
-		CheckScore();
+		checkScore();
 
 		// Display game over message and final score
 		g.setColor(Color.RED);
@@ -394,7 +394,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 	}
 
 	// Method to check if current score is higher than the highscore
-	public void CheckScore()
+	public void checkScore()
 	{
 		if (highScore.equals(""))
 			return;
@@ -453,11 +453,11 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		// Snake move right 
 		if(right) 
 		{
-			for(int n = lengthofsnake-1; n>=0;n--)
+			for(int n = lengthofSnake-1; n>=0;n--)
 			{
 				snakeYlength[n+1] = snakeYlength[n];
 			}
-			for(int n = lengthofsnake; n>=0; n--) 
+			for(int n = lengthofSnake; n>=0; n--) 
 			{
 				if (n==0) {
 					// Snake move 25 pixel to the right 
@@ -479,11 +479,11 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		// Snake move left
 		if(left) 
 		{
-			for(int n = lengthofsnake-1; n>=0;n--)
+			for(int n = lengthofSnake-1; n>=0;n--)
 			{
 				snakeYlength[n+1] = snakeYlength[n];
 			}
-			for(int n = lengthofsnake; n>=0; n--) 
+			for(int n = lengthofSnake; n>=0; n--) 
 			{
 				if (n==0) {
 					// Snake move 25 pixel to the left
@@ -506,12 +506,12 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		// Snake move up
 		if(up) 
 		{
-			for(int n = lengthofsnake-1; n>=0;n--)
+			for(int n = lengthofSnake-1; n>=0;n--)
 			{
 				snakeXlength[n+1] = snakeXlength[n];
 			}
 
-			for(int n = lengthofsnake; n>=0; n--) 
+			for(int n = lengthofSnake; n>=0; n--) 
 			{
 				if (n==0) 
 				{
@@ -537,12 +537,12 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		// Snake move down
 		if(down) 
 		{
-			for(int n = lengthofsnake-1; n>=0;n--)
+			for(int n = lengthofSnake-1; n>=0;n--)
 			{
 				snakeXlength[n+1] = snakeXlength[n];
 			}
 
-			for(int n = lengthofsnake; n>=0; n--) {
+			for(int n = lengthofSnake; n>=0; n--) {
 				if (n==0) 
 				{
 					// Snake move 25 pixel to bottom
@@ -573,7 +573,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		{
 			moves = 0;
 			score = 0;
-			lengthofsnake=3;
+			lengthofSnake=3;
 			repaint();
 		}
 
