@@ -25,6 +25,10 @@ public class About extends JPanel {
 
         back = new ImageIcon(Constant.BACK_IMAGE);
 
+        mouseListener();
+    }
+
+    private void mouseListener(){
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
