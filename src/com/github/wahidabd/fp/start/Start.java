@@ -38,35 +38,7 @@ public class Start extends JPanel {
         aboutImage = new ImageIcon(Constant.ABOUT_IMAGE);
         scoreImage = new ImageIcon(Constant.SCORE_IMAGE);
         
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                int x = e.getX();
-                int y = e.getY();
-
-                if ((x >= 342 && x <= 585) && (y >= 252 && y <= 325)){
-                    System.out.println("LEVEL");
-                    soundClick.play();;
-                    
-                    toLevel();
-                    soundMainMenu.stop();
-                }else if((x >= 342 && x <= 585) && (y >= 352 && y <= 400)){
-                    System.out.println("ABOUT");
-                    toAbout();
-
-                    soundClick.play();;
-                    soundMainMenu.stop();
-                }else if ((x >= 313 && x <= 591) && (y >= 427 && y <= 483)){
-                    toHighScore();
-
-                    soundClick.play();
-                    soundMainMenu.stop();
-                }
-
-                // get coordinate
-                System.out.println("X= " + x + ", Y=" + y);
-            }
-        });
+        mouseListener();
     }
 
     private void toAbout(){
@@ -88,6 +60,38 @@ public class Start extends JPanel {
         Functions.dispose();
         Functions.frame(highScore);
         repaint();
+    }
+
+    private void mouseListener(){
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int x = e.getX();
+                int y = e.getY();
+
+                if ((x >= 342 && x <= 585) && (y >= 252 && y <= 325)){
+                    System.out.println("LEVEL");
+                    soundClick.play();;
+
+                    toLevel();
+                    soundMainMenu.stop();
+                }else if((x >= 342 && x <= 585) && (y >= 352 && y <= 400)){
+                    System.out.println("ABOUT");
+                    toAbout();
+
+                    soundClick.play();;
+                    soundMainMenu.stop();
+                }else if ((x >= 313 && x <= 591) && (y >= 427 && y <= 483)){
+                    toHighScore();
+
+                    soundClick.play();
+                    soundMainMenu.stop();
+                }
+
+                // get coordinate
+                System.out.println("X= " + x + ", Y=" + y);
+            }
+        });
     }
 
     public void paint(Graphics g){

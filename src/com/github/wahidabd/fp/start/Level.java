@@ -39,6 +39,18 @@ public class Level extends JPanel {
         hard = new ImageIcon(Constant.HARD_LEVEL);
         
         // when mouse click
+        mouseListener();
+    }
+
+    private void action(int delay, int level){
+
+        GamePlay gamePlay = new GamePlay(delay, level);
+        Functions.dispose();
+        Functions.frame(gamePlay);
+        repaint();
+    }
+
+    private void mouseListener(){
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -47,26 +59,26 @@ public class Level extends JPanel {
 
                 if ((x >= 338 && x <= 567) && (y >= 271 && y <= 327))
                 {
-                	soundClick.play();
+                    soundClick.play();
                     action(75, 1);
                     soundMainMenu.stop();
                 }
                 else if ((x >= 338 && x <= 567) && (y >= 347 && y <= 404))
                 {
-                	soundClick.play();
+                    soundClick.play();
                     action(60, 2);
                     soundMainMenu.stop();
                 }
                 else if ((x >= 338 && x <= 567) && (y >= 323 && y <= 479))
                 {
-                	soundClick.play();
+                    soundClick.play();
                     action(45, 3);
                     soundMainMenu.stop();
                 }
                 else if ((x >= 52 && x <= 79) && (y >= 40 && y <= 61))
                 {
-                	soundClick.play();
-                	soundMainMenu.stop();
+                    soundClick.play();
+                    soundMainMenu.stop();
                     Start start = new Start();
                     Functions.dispose();
                     Functions.frame(start);
@@ -78,14 +90,6 @@ public class Level extends JPanel {
         });
     }
 
-    private void action(int delay, int level){
-
-        GamePlay gamePlay = new GamePlay(delay, level);
-        Functions.dispose();
-        Functions.frame(gamePlay);
-        repaint();
-    }
-
     public void paint(Graphics g){
 
         // background
@@ -93,7 +97,6 @@ public class Level extends JPanel {
         background.paintIcon(this, g, 0, 0);
 
         // position all image
-//      chooseLevel.paintIcon(this, g, 254, 32);
         back.paintIcon(this, g, 49, 36);
         easy.paintIcon(this, g, 338, 271);
         medium.paintIcon(this, g, 338, 347);
