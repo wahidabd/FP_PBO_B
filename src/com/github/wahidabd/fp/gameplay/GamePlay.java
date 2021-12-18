@@ -1,6 +1,8 @@
 package com.github.wahidabd.fp.gameplay;
 
+import com.github.wahidabd.fp.start.Level;
 import com.github.wahidabd.fp.utils.Constant;
+import com.github.wahidabd.fp.utils.Functions;
 import com.github.wahidabd.fp.utils.Sound;
 import javax.swing.*;
 import java.awt.*;
@@ -317,6 +319,11 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("arial", Font.BOLD, 20));
 		g.drawString("Press Enter to restart", 350, 340);
+
+		// Display press esc to select level
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("arial", Font.BOLD, 20));
+		g.drawString("Press Esc to select leve", 350, 370);
 
 		g.dispose();
 	}
@@ -659,6 +666,13 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 			right = false;
 
 
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+		{
+			Level level = new Level();
+			Functions.frame(level);
+			Functions.frame(level);
 		}
 	}
 
