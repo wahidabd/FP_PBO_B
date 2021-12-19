@@ -1,6 +1,6 @@
 package com.github.wahidabd.fp.start;
 
-import com.github.wahidabd.fp.gameplay.GamePlay;
+import com.github.wahidabd.fp.gameplay.Gameplay;
 import com.github.wahidabd.fp.utils.Constant;
 import com.github.wahidabd.fp.utils.Functions;
 import com.github.wahidabd.fp.utils.Sound;
@@ -44,7 +44,7 @@ public class Level extends JPanel {
 
     private void action(int delay, int level){
 
-        GamePlay gamePlay = new GamePlay(delay, level);
+        Gameplay gamePlay = new Gameplay(delay, level);
         Functions.dispose();
         Functions.frame(gamePlay);
         repaint();

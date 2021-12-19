@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.Random;
 
 
-public class GamePlay extends JPanel implements KeyListener, ActionListener {
+public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
 	// Create an array to store snake length with maximum length is 750
 	private final int[] snakeXLength = new int[750];
@@ -72,7 +72,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 	private Sound soundGameplay = new Sound();
 	private Sound soundGameOver = new Sound();
 
-	public GamePlay(int delay, int level) {
+	public Gameplay(int delay, int level) {
 		// Add the components that being listened to key events
 		addKeyListener(this);
 		// Enabling view's focus event on keypad mode 
