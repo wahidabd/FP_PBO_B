@@ -671,6 +671,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
 		{
 			Level level = new Level();
+			soundGameplay.stop();
 			Functions.frame(level);
 			Functions.frame(level);
 		}
