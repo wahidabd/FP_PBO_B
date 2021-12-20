@@ -27,6 +27,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
 	// Create an variable to store level 
 	private final int level;
+	private final int delay;
 
 	// Create variables to control the snake with default values is false
 	private boolean left = false;
@@ -80,6 +81,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
 		// set level
 		this.level = level;
+		this.delay = delay;
 
 		// Create timer object and start it
 		timer = new Timer(delay, this);
@@ -323,7 +325,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 		// Display press esc to select level
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("arial", Font.BOLD, 20));
-		g.drawString("Press Esc to select leve", 350, 370);
+		g.drawString("Press Esc to select level", 335, 370);
 
 		g.dispose();
 	}
@@ -430,6 +432,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 				writeFile = new FileWriter(scoreFile);
 				writer    = new BufferedWriter(writeFile);
 				writer.write(this.highScore);
+
+				Gameplay gameplay = new Gameplay(delay, level);
+				soundGameplay.stop();
+				Functions.dispose();
+				Functions.frame(gameplay);
+
 			}
 			catch (Exception e)
 			{
